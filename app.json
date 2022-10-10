@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "app-mobile",
+    "slug": "app-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/Race_Results_Logo_Icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/Race_Results_Logo_Splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Race_Results_Logo_Icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/Race_Results_Logo_Icon.png"
+    }
+  }
+}
