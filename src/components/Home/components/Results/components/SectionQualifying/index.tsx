@@ -52,7 +52,6 @@ export default function SectionQualifying({ showSectionQualifying }: PropsSectio
                                 <Text style={{ fontSize: 18, lineHeight: 26 }}>
                                     {`${RaceTable?.Races[0].Circuit.circuitName}\n${RaceTable?.Races[0].Circuit.Location.locality}, ${RaceTable?.Races[0].Circuit.Location.country}`}
                                 </Text>
-                                <View style={{flex: 1, alignItems: "center"}}>
                                 {
                                     flags.png !== '' ? (
                                         <Image
@@ -61,7 +60,6 @@ export default function SectionQualifying({ showSectionQualifying }: PropsSectio
                                         />
                                     ) : undefined
                                 }
-                                </View>
                             </View>
                             <TableData
                                 tBody={

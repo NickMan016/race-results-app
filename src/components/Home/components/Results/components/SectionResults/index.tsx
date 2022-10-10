@@ -49,16 +49,14 @@ export default function SectionResults() {
                                     <Text style={{ fontSize: 18, lineHeight: 26 }}>
                                         {`${RaceTable?.Races[0].Circuit.circuitName}\n${RaceTable?.Races[0].Circuit.Location.locality}, ${RaceTable?.Races[0].Circuit.Location.country}`}
                                     </Text>
-                                    <View style={{ flex: 1, alignItems: "center" }}>
-                                        {
-                                            flags.png !== '' ? (
-                                                <Image
-                                                    style={{ height: 30, width: 50, borderColor: '#000', borderWidth: .8 }}
-                                                    source={{ uri: `${flags.png}` }}
-                                                />
-                                            ) : undefined
-                                        }
-                                    </View>
+                                    {
+                                        flags.png !== '' ? (
+                                            <Image
+                                                style={{ height: 30, width: 50, borderColor: '#000', borderWidth: .8 }}
+                                                source={{ uri: `${flags.png}` }}
+                                            />
+                                        ) : undefined
+                                    }
                                 </View>
                                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 6 }}>
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
