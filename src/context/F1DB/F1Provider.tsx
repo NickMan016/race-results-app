@@ -20,6 +20,19 @@ const INITIAL_STATE: MRData = {
         season: "",
         round: "",
         Races: []
+    },
+    StandingsTable: {
+        season: '',
+        StandingsLists: []
+    },
+    ConstructorTable: {
+        Constructors: []
+    },
+    DriverTable: {
+        Drivers: []
+    },
+    CircuitTable: {
+        Circuits: []
     }
 }
 

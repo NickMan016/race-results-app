@@ -7,11 +7,11 @@ export interface MRData {
     limit: string
     offset: string
     total: string
-    RaceTable?: RaceTable
-    StandingsTable?: StandingsTable
-    ConstructorTable?: ConstructorTable,
-    DriverTable?: DriverTable,
-    CircuitTable?: CircuitTable,
+    RaceTable: RaceTable
+    StandingsTable: StandingsTable
+    ConstructorTable: ConstructorTable,
+    DriverTable: DriverTable,
+    CircuitTable: CircuitTable,
 }
 
 export interface Driver {
