@@ -13,7 +13,7 @@ export default function Drivers() {
     const years = ["Current"];
     const [isLoad, setIsLoad] = useState(false);
     const [isLoadTable, setIsLoadTable] = useState(false);
-    const { stateConstructors, stateDrivers, getConstructors, getDrivers } = useContext(F1Context);
+    const { stateDrivers, getDrivers } = useContext(F1Context);
     const { DriverTable } = stateDrivers;
     const date = new Date();
     for (let index = (date.getFullYear() - 1); index >= 1950; index--) {
