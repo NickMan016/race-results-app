@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Image } from "react-native";
 
 interface PropsImageCircuit {
