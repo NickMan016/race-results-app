@@ -48,7 +48,7 @@ export default function Teams() {
     return (
         <View style={{ flex: 12 }} >
             <View style={{ backgroundColor: '#ee0000', paddingVertical: 15, paddingHorizontal: 12 }}>
-                <TouchableHighlight onPress={backHome} style={{ width: 18 }}>
+                <TouchableHighlight onPress={backHome} style={{ width: 18 }} activeOpacity={1} underlayColor="#ee0000">
                     <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#fff' }} size={18} />
                 </TouchableHighlight>
             </View>
