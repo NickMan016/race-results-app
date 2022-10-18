@@ -2,9 +2,11 @@ import { Image } from "react-native";
 
 interface PropsImageDriver {
     driver: string
+    size: number,
+    margin: number
 }
 
-export default function ImageDriver({ driver }: PropsImageDriver) {
+export default function ImageDriver({ driver, size, margin }: PropsImageDriver) {
     const drivers:any = {
         'albon': require('./../../assets/drivers/albon.png'),
         'alonso': require('./../../assets/drivers/alonso.png'),
@@ -32,7 +34,7 @@ export default function ImageDriver({ driver }: PropsImageDriver) {
     
     return (
         <Image
-            style={{ width: 40, height: 44, borderRadius: 22, marginRight: 12 }}
+            style={{ width: size, height: size, borderRadius: 25, marginHorizontal: margin }}
             source={drivers[driver]}
         />
     )
