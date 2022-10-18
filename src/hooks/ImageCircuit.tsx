@@ -32,7 +32,7 @@ export default function ImageCircuit({ circuit }: PropsImageCircuit) {
     
     return (
         <Image
-            style={{ width: '100%', height: 200, resizeMode: "center", marginTop: 12 }}
+            style={{ width: '100%', height: 200, resizeMode: "center", marginTop: 20 }}
             source={circuits[circuit]}
         />
     )
