@@ -36,7 +36,6 @@ export default function Home() {
                     renderScene={renderScene}
                     onIndexChange={setIndex}
                     initialLayout={{ width: layout.width }}
-                    // sceneContainerStyle={{ paddingHorizontal: 12, paddingVertical: 8, }}
                 />
             </View>
             <Menu />
