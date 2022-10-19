@@ -4,6 +4,7 @@ import { F1Context } from "../../../../../../context/F1DB/F1Context";
 import { Country } from "../../../../../../interfaces/CountriesInterfaces";
 import Section from "../../../../../Section";
 import TableData from "../../../../../TableData";
+import SectionLoading from "../../../../../Section/components/SectionLoading";
 
 interface PropsSectionQualifying {
     showSectionQualifying: Dispatch<SetStateAction<boolean>>
@@ -86,9 +87,7 @@ export default function SectionQualifying({ showSectionQualifying }: PropsSectio
                         </>
                     } />
                 ) : (
-                    <View>
-                        <Text>Cargando...</Text>
-                    </View>
+                    <SectionLoading />
                 )
             }
         </>

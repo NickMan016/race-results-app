@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import SelectDropdown from "react-native-select-dropdown"
 import Section from "../Section"
 import TableData from "../TableData"
+import SectionLoadingTable from "../Section/components/SectionLoadingTable"
+import SectionLoading from "../Section/components/SectionLoading"
 
 export default function Teams() {
     const navigate = useNavigate();
@@ -94,17 +96,13 @@ export default function Teams() {
                                     }
                                     />
                                 ) : (
-                                    <View>
-                                        <Text>Cargando...</Text>
-                                    </View>
+                                    <SectionLoadingTable />
                                 )
                             }
                         </>
                     } />
                 ) : (
-                    <View>
-                        <Text>Cargando...</Text>
-                    </View>
+                    <SectionLoading />
                 )
             }
         </View >

@@ -9,6 +9,8 @@ import Section from "../Section";
 import moment from "moment-timezone";
 import ImageCircuit from "../../hooks/ImageCircuit";
 import ImageDriver from "../../hooks/ImageDriver";
+import SectionLoading from "../Section/components/SectionLoading";
+import SectionLoadingTable from "../Section/components/SectionLoadingTable";
 
 export default function Schedule() {
 
@@ -27,7 +29,7 @@ export default function Schedule() {
     }
 
     const navigate = useNavigate();
-    const [isLoad, setIsLoad] = useState(true);
+    const [isLoad, setIsLoad] = useState(false);
     const { stateSchedule, stateRace, stateResults, getSchedule, getRaceWithResults } = useContext(F1Context);
     const [stateCountry, setStateCountry] = useState(INITIAL_STATE);
     const { RaceTable } = stateRace;
@@ -222,17 +224,20 @@ export default function Schedule() {
                                         <ImageCircuit circuit={`${RaceTable.Races[0].Circuit.circuitId}`} />
                                     </>
                                 ) : (
-                                    <View>
-                                        <Text>Cargando...</Text>
-                                    </View>
+                                    <>
+                                        <View style={{ flexDirection: "row", alignItems: "center", marginTop: 6 }}>
+                                            <FontAwesomeIcon style={{ flex: 1 }} icon={faChevronCircleLeft} size={22} />
+                                            <View style={{ flex: 1 }}></View>
+                                            <FontAwesomeIcon style={{ flex: 1 }} icon={faChevronCircleRight} size={22} />
+                                        </View>
+                                        <SectionLoadingTable />
+                                    </>
                                 )
                             }
                         </>
                     } />
                 ) : (
-                    <View>
-                        <Text>Cargando...</Text>
-                    </View>
+                    <SectionLoading />
                 )
             }
         </View>

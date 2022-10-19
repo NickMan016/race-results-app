@@ -7,6 +7,7 @@ import { F1Context } from "../../../../../../context/F1DB/F1Context";
 import TableData from "../../../../../TableData";
 import { Result } from "../../../../../../interfaces/F1Interfaces";
 import Section from "../../../../../Section";
+import SectionLoading from "../../../../../Section/components/SectionLoading";
 
 export default function SectionResults() {
     const INITIAL_STATE: Country = {
@@ -139,9 +140,7 @@ export default function SectionResults() {
                         }
                     />
                 ) : (
-                    <View>
-                        <Text>Cargando...</Text>
-                    </View>
+                    <SectionLoading />
                 )
             }
         </>

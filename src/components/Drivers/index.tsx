@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import SelectDropdown from "react-native-select-dropdown"
 import Section from "../Section"
 import TableData from "../TableData"
+import SectionLoadingTable from "../Section/components/SectionLoadingTable"
+import SectionLoading from "../Section/components/SectionLoading"
 
 export default function Drivers() {
     const navigate = useNavigate();
@@ -18,7 +20,7 @@ export default function Drivers() {
     const date = new Date();
     for (let index = (date.getFullYear() - 1); index >= 1950; index--) {
         years.push(index.toString());
-    }    
+    }
 
     useEffect(() => {
         const responseDrivers = getDrivers('current/drivers');
@@ -82,7 +84,7 @@ export default function Drivers() {
                                             {
                                                 DriverTable.Drivers.map((value, index) => (
                                                     <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: '#000', paddingVertical: 4 }}>
-                                                        <View style={{flex: .5}}></View>
+                                                        <View style={{ flex: .5 }}></View>
                                                         <View style={{ flex: 4 }}>
                                                             <Text style={{ fontSize: 16 }}>{`${value.givenName} ${value.familyName}`}</Text>
                                                             <Text style={{ fontSize: 12 }}>{value.nationality}</Text>
@@ -95,17 +97,13 @@ export default function Drivers() {
                                     }
                                     />
                                 ) : (
-                                    <View>
-                                        <Text>Cargando...</Text>
-                                    </View>
+                                    <SectionLoadingTable />
                                 )
                             }
                         </>
                     } />
                 ) : (
-                    <View>
-                        <Text>Cargando...</Text>
-                    </View>
+                    <SectionLoading />
                 )
             }
         </View >

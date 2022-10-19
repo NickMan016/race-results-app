@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { F1Context } from "../../../../../../context/F1DB/F1Context";
 import Section from "../../../../../Section";
 import TableData from "../../../../../TableData";
+import SectionLoading from "../../../../../Section/components/SectionLoading";
 
 export default function SectionConstructorStanding() {
     const [isLoad, setIsLoad] = useState(false);
@@ -49,9 +50,7 @@ export default function SectionConstructorStanding() {
                         }
                     />
                 ) : (
-                    <View>
-                        <Text>Cargando...</Text>
-                    </View>
+                    <SectionLoading />
                 )
             }
         </>
