@@ -26,6 +26,7 @@ export default function SectionDriverStanding() {
                         title="Driver Championship"
                         content={
                             <TableData
+                                height={460}
                                 tBody={
                                     <>
                                         {

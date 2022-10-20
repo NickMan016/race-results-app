@@ -68,8 +68,8 @@ export default function Schedule() {
 
     return (
         <View style={{ flex: 12 }} >
-            <View style={{ backgroundColor: '#ee0000', paddingVertical: 15, paddingHorizontal: 12 }}>
-                <TouchableHighlight onPress={backHome} style={{ width: 18 }} activeOpacity={1} underlayColor="#ee0000">
+            <View style={{ backgroundColor: '#ee0000' }}>
+                <TouchableHighlight onPress={backHome} style={{ width: 18, paddingVertical: 15, paddingHorizontal: 12 }} activeOpacity={1} underlayColor="#ee0000">
                     <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#fff' }} size={18} />
                 </TouchableHighlight>
             </View>
@@ -79,7 +79,7 @@ export default function Schedule() {
                         <>
                             {
                                 isLoad ? (
-                                    <ScrollView>
+                                    <>
                                         <View style={{ flexDirection: "row", alignItems: "center", marginTop: 4 }}>
                                             {RaceTable.round === '1' ? (
                                                 <FontAwesomeIcon style={{ flex: 1, color: '#878787' }} icon={faChevronCircleLeft} size={22} />
@@ -110,119 +110,121 @@ export default function Schedule() {
                                                 ) : undefined
                                             }
                                         </View>
-                                        {
-                                            stateResults.RaceTable?.Races.length === 0 ? (
-                                                <>
-                                                    <View style={{ flexDirection: "row" }}>
-                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP1: </Text>
-                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].FirstPractice.date} ${RaceTable.Races[0].FirstPractice.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                    </View>
-                                                    {
-                                                        (Object.keys(RaceTable?.Races[0].Sprint || {}).length) === 0 ? (
-                                                            <>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP2: </Text>
-                                                                    <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].SecondPractice.date} ${RaceTable.Races[0].SecondPractice.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                                </View>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP3: </Text>
-                                                                    <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].ThirdPractice?.date} ${RaceTable.Races[0].ThirdPractice?.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                                </View>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>Qualifying: </Text>
-                                                                    <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].Qualifying.date} ${RaceTable.Races[0].Qualifying.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                                </View>
-                                                            </>
-                                                        ) : (
-                                                            <>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>Qualifying: </Text>
-                                                                    <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].Qualifying.date} ${RaceTable.Races[0].Qualifying.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                                </View>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP2: </Text>
-                                                                    <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].SecondPractice.date} ${RaceTable.Races[0].SecondPractice.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                                </View>
-                                                                <View style={{ flexDirection: "row" }}>
-                                                                    <Text style={{ fontSize: 18, fontWeight: "bold" }}>Sprint: </Text>
-                                                                    <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].Sprint?.date} ${RaceTable.Races[0].Sprint?.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                                </View>
-                                                            </>
-                                                        )
-                                                    }
-                                                    <View style={{ flexDirection: "row" }}>
-                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>Race: </Text>
-                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].date} ${RaceTable.Races[0].time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
-                                                    </View>
-                                                </>
+                                        <ScrollView style={{height: '70%'}}>
+                                            {
+                                                stateResults.RaceTable?.Races.length === 0 ? (
+                                                    <>
+                                                        <View style={{ flexDirection: "row" }}>
+                                                            <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP1: </Text>
+                                                            <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].FirstPractice.date} ${RaceTable.Races[0].FirstPractice.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                        </View>
+                                                        {
+                                                            (Object.keys(RaceTable?.Races[0].Sprint || {}).length) === 0 ? (
+                                                                <>
+                                                                    <View style={{ flexDirection: "row" }}>
+                                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP2: </Text>
+                                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].SecondPractice.date} ${RaceTable.Races[0].SecondPractice.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                                    </View>
+                                                                    <View style={{ flexDirection: "row" }}>
+                                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP3: </Text>
+                                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].ThirdPractice?.date} ${RaceTable.Races[0].ThirdPractice?.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                                    </View>
+                                                                    <View style={{ flexDirection: "row" }}>
+                                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>Qualifying: </Text>
+                                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].Qualifying.date} ${RaceTable.Races[0].Qualifying.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                                    </View>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <View style={{ flexDirection: "row" }}>
+                                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>Qualifying: </Text>
+                                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].Qualifying.date} ${RaceTable.Races[0].Qualifying.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                                    </View>
+                                                                    <View style={{ flexDirection: "row" }}>
+                                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>FP2: </Text>
+                                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].SecondPractice.date} ${RaceTable.Races[0].SecondPractice.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                                    </View>
+                                                                    <View style={{ flexDirection: "row" }}>
+                                                                        <Text style={{ fontSize: 18, fontWeight: "bold" }}>Sprint: </Text>
+                                                                        <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].Sprint?.date} ${RaceTable.Races[0].Sprint?.time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                                    </View>
+                                                                </>
+                                                            )
+                                                        }
+                                                        <View style={{ flexDirection: "row" }}>
+                                                            <Text style={{ fontSize: 18, fontWeight: "bold" }}>Race: </Text>
+                                                            <Text style={{ fontSize: 18 }}>{moment(`${RaceTable.Races[0].date} ${RaceTable.Races[0].time}`).format('ddd, MMM DD HH:mm [hrs]')}</Text>
+                                                        </View>
+                                                    </>
 
-                                            ) : (
-                                                <>
-                                                    {
-                                                        stateResults.RaceTable?.Races[0].Results?.map((value, index) => {
-                                                            if (index <= 2) {
-                                                                let icon;
-                                                                if (index === 0) {
-                                                                    icon = <FontAwesomeIcon icon={fa1} size={50} />;
-                                                                } else if (index === 1) {
-                                                                    icon = <FontAwesomeIcon icon={fa2} size={50} />;
-                                                                } else if (index === 2) {
-                                                                    icon = <FontAwesomeIcon icon={fa3} size={50} />;
+                                                ) : (
+                                                    <>
+                                                        {
+                                                            stateResults.RaceTable?.Races[0].Results?.map((value, index) => {
+                                                                if (index <= 2) {
+                                                                    let icon;
+                                                                    if (index === 0) {
+                                                                        icon = <FontAwesomeIcon icon={fa1} size={50} />;
+                                                                    } else if (index === 1) {
+                                                                        icon = <FontAwesomeIcon icon={fa2} size={50} />;
+                                                                    } else if (index === 2) {
+                                                                        icon = <FontAwesomeIcon icon={fa3} size={50} />;
+                                                                    }
+                                                                    return (
+                                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}>
+                                                                            {icon}
+                                                                            <ImageDriver driver={`${value.Driver.driverId}`} size={50} margin={8} />
+                                                                            <View style={{ marginHorizontal: 8 }}>
+                                                                                <Text style={{ fontSize: 20 }}>{value.Driver.givenName} {value.Driver.familyName}</Text>
+                                                                                <Text style={{ fontSize: 14 }}>{value.Driver.nationality}</Text>
+                                                                            </View>
+                                                                        </View>
+                                                                    )
                                                                 }
-                                                                return (
-                                                                    <View key={index} style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}>
-                                                                        {icon}
-                                                                        <ImageDriver driver={`${value.Driver.driverId}`} size={50} margin={8} />
-                                                                        <View style={{ marginHorizontal: 8 }}>
-                                                                            <Text style={{ fontSize: 20 }}>{value.Driver.givenName} {value.Driver.familyName}</Text>
-                                                                            <Text style={{ fontSize: 14 }}>{value.Driver.nationality}</Text>
+                                                            })
+                                                        }
+                                                        {
+                                                            stateResults.RaceTable?.Races[0].Results?.map((value, index) => {
+                                                                if (value.grid === '1') {
+                                                                    return (
+                                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}>
+                                                                            <View style={{ backgroundColor: '#ee0000', borderRadius: 4, marginHorizontal: 8, padding: 5 }}>
+                                                                                <FontAwesomeIcon icon={faP} size={22} style={{ color: '#fff' }} />
+                                                                            </View>
+                                                                            <ImageDriver driver={`${value.Driver.driverId}`} size={50} margin={8} />
+                                                                            <View style={{ marginHorizontal: 8 }}>
+                                                                                <Text style={{ fontSize: 20 }}>{value.Driver.givenName} {value.Driver.familyName}</Text>
+                                                                                <Text style={{ fontSize: 14 }}>{value.Driver.nationality}</Text>
+                                                                            </View>
                                                                         </View>
-                                                                    </View>
-                                                                )
-                                                            }
-                                                        })
-                                                    }
-                                                    {
-                                                        stateResults.RaceTable?.Races[0].Results?.map((value, index) => {
-                                                            if (value.grid === '1') {
-                                                                return (
-                                                                    <View key={index} style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}>
-                                                                        <View style={{ backgroundColor: '#ee0000', borderRadius: 4, marginHorizontal: 8, padding: 5 }}>
-                                                                            <FontAwesomeIcon icon={faP} size={22} style={{ color: '#fff' }} />
+                                                                    )
+                                                                }
+                                                            })
+                                                        }
+                                                        {
+                                                            stateResults.RaceTable?.Races[0].Results?.map((value, index) => {
+                                                                if (value.FastestLap?.rank === '1') {
+                                                                    return (
+                                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}>
+                                                                            <View style={{ backgroundColor: '#C026D3', borderRadius: 4, marginHorizontal: 8, padding: 5 }}>
+                                                                                <FontAwesomeIcon icon={faClock} size={22} style={{ color: '#fff' }} />
+                                                                            </View>
+                                                                            <ImageDriver driver={`${value.Driver.driverId}`} size={50} margin={8} />
+                                                                            <View style={{ marginHorizontal: 8 }}>
+                                                                                <Text style={{ fontSize: 20 }}>{value.Driver.givenName} {value.Driver.familyName}</Text>
+                                                                                <Text style={{ fontSize: 14 }}>{value.Driver.nationality}</Text>
+                                                                            </View>
                                                                         </View>
-                                                                        <ImageDriver driver={`${value.Driver.driverId}`} size={50} margin={8} />
-                                                                        <View style={{ marginHorizontal: 8 }}>
-                                                                            <Text style={{ fontSize: 20 }}>{value.Driver.givenName} {value.Driver.familyName}</Text>
-                                                                            <Text style={{ fontSize: 14 }}>{value.Driver.nationality}</Text>
-                                                                        </View>
-                                                                    </View>
-                                                                )
-                                                            }
-                                                        })
-                                                    }
-                                                    {
-                                                        stateResults.RaceTable?.Races[0].Results?.map((value, index) => {
-                                                            if (value.FastestLap?.rank === '1') {
-                                                                return (
-                                                                    <View key={index} style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}>
-                                                                        <View style={{ backgroundColor: '#C026D3', borderRadius: 4, marginHorizontal: 8, padding: 5 }}>
-                                                                            <FontAwesomeIcon icon={faClock} size={22} style={{ color: '#fff' }} />
-                                                                        </View>
-                                                                        <ImageDriver driver={`${value.Driver.driverId}`} size={50} margin={8} />
-                                                                        <View style={{ marginHorizontal: 8 }}>
-                                                                            <Text style={{ fontSize: 20 }}>{value.Driver.givenName} {value.Driver.familyName}</Text>
-                                                                            <Text style={{ fontSize: 14 }}>{value.Driver.nationality}</Text>
-                                                                        </View>
-                                                                    </View>
-                                                                )
-                                                            }
-                                                        })
-                                                    }
-                                                </>
-                                            )
-                                        }
-                                        <ImageCircuit circuit={`${RaceTable.Races[0].Circuit.circuitId}`} />
-                                    </ScrollView>
+                                                                    )
+                                                                }
+                                                            })
+                                                        }
+                                                    </>
+                                                )
+                                            }
+                                            <ImageCircuit circuit={`${RaceTable.Races[0].Circuit.circuitId}`} />
+                                        </ScrollView>
+                                    </>
                                 ) : (
                                     <>
                                         <View style={{ flexDirection: "row", alignItems: "center", marginTop: 6 }}>

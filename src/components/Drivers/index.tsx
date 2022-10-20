@@ -49,8 +49,8 @@ export default function Drivers() {
 
     return (
         <View style={{ flex: 12 }} >
-            <View style={{ backgroundColor: '#ee0000', paddingVertical: 15, paddingHorizontal: 12 }}>
-                <TouchableHighlight onPress={backHome} style={{ width: 18 }} activeOpacity={1} underlayColor="#ee0000">
+            <View style={{ backgroundColor: '#ee0000' }}>
+                <TouchableHighlight onPress={backHome} style={{ width: 18, paddingVertical: 15, paddingHorizontal: 12 }} activeOpacity={1} underlayColor="#ee0000">
                     <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#fff' }} size={18} />
                 </TouchableHighlight>
             </View>
@@ -79,22 +79,24 @@ export default function Drivers() {
                             />
                             {
                                 isLoadTable ? (
-                                    <TableData tBody={
-                                        <>
-                                            {
-                                                DriverTable.Drivers.map((value, index) => (
-                                                    <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: '#000', paddingVertical: 4 }}>
-                                                        <View style={{ flex: .5 }}></View>
-                                                        <View style={{ flex: 4 }}>
-                                                            <Text style={{ fontSize: 16 }}>{`${value.givenName} ${value.familyName}`}</Text>
-                                                            <Text style={{ fontSize: 12 }}>{value.nationality}</Text>
+                                    <TableData
+                                        height='75%'
+                                        tBody={
+                                            <>
+                                                {
+                                                    DriverTable.Drivers.map((value, index) => (
+                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: '#000', paddingVertical: 4 }}>
+                                                            <View style={{ flex: .5 }}></View>
+                                                            <View style={{ flex: 4 }}>
+                                                                <Text style={{ fontSize: 16 }}>{`${value.givenName} ${value.familyName}`}</Text>
+                                                                <Text style={{ fontSize: 12 }}>{value.nationality}</Text>
+                                                            </View>
+                                                            <View style={{ flex: 4 }}><Text style={{ fontSize: 16 }}>{value.permanentNumber || 'Not Number'}</Text></View>
                                                         </View>
-                                                        <View style={{ flex: 4 }}><Text style={{ fontSize: 16 }}>{value.permanentNumber || 'Not Number'}</Text></View>
-                                                    </View>
-                                                ))
-                                            }
-                                        </>
-                                    }
+                                                    ))
+                                                }
+                                            </>
+                                        }
                                     />
                                 ) : (
                                     <SectionLoadingTable />

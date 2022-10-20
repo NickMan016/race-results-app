@@ -63,6 +63,7 @@ export default function SectionQualifying({ showSectionQualifying }: PropsSectio
                                 }
                             </View>
                             <TableData
+                                height='70%'
                                 tBody={
                                     <>
                                         {RaceTable?.Races[0].QualifyingResults?.map((value, index) => {
