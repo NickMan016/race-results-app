@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { View, Text, Image, TouchableHighlight, FlatList } from "react-native"
+import { View, Text, Image, TouchableHighlight, FlatList, ScrollView } from "react-native"
 import { useNavigate } from "react-router-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { fa1, fa2, fa3, faArrowLeft, faChevronCircleLeft, faChevronCircleRight, faClock, faP } from "@fortawesome/free-solid-svg-icons"
@@ -79,7 +79,7 @@ export default function Schedule() {
                         <>
                             {
                                 isLoad ? (
-                                    <>
+                                    <ScrollView>
                                         <View style={{ flexDirection: "row", alignItems: "center", marginTop: 4 }}>
                                             {RaceTable.round === '1' ? (
                                                 <FontAwesomeIcon style={{ flex: 1, color: '#878787' }} icon={faChevronCircleLeft} size={22} />
@@ -222,7 +222,7 @@ export default function Schedule() {
                                             )
                                         }
                                         <ImageCircuit circuit={`${RaceTable.Races[0].Circuit.circuitId}`} />
-                                    </>
+                                    </ScrollView>
                                 ) : (
                                     <>
                                         <View style={{ flexDirection: "row", alignItems: "center", marginTop: 6 }}>
