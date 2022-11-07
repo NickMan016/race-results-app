@@ -1,18 +1,28 @@
 import { useState } from "react";
 import SectionQualifying from "./components/SectionQualifying";
 import SectionResults from "./components/SectionResults";
+import SectionSprint from "./components/SectionSprint";
 
 
 export default function Results() {
     const [showSection, setShowSection] = useState(true);
+    const [showSectionSprint, setShowSectionSprint] = useState(true);
 
     return (
         <>
             {
-                showSection ? (
-                    <SectionQualifying showSectionQualifying={setShowSection} />
+                showSectionSprint ? (
+                    <SectionSprint showSectionSprint={setShowSectionSprint} />
                 ) : (
-                    <SectionResults />
+                    <>
+                        {
+                            showSection ? (
+                                <SectionQualifying showSectionQualifying={setShowSection} />
+                            ) : (
+                                <SectionResults />
+                            )
+                        }
+                    </>
                 )
             }
         </>

@@ -1,15 +1,18 @@
 import { View, Text, Image } from "react-native";
-import { useContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { Country } from "../../../../../../interfaces/CountriesInterfaces";
 import { F1Context } from "../../../../../../context/F1DB/F1Context";
 import TableData from "../../../../../TableData";
-import { Result } from "../../../../../../interfaces/F1Interfaces";
 import Section from "../../../../../Section";
 import SectionLoading from "../../../../../Section/components/SectionLoading";
 
-export default function SectionResults() {
+interface PropsSectionSprint {
+    showSectionSprint: Dispatch<SetStateAction<boolean>>
+}
+
+export default function SectionSprint({ showSectionSprint }: PropsSectionSprint) {
     const INITIAL_STATE: Country = {
         name: "",
         alpha3Code: "",
@@ -25,16 +28,19 @@ export default function SectionResults() {
     }
 
     const [isLoad, setIsLoad] = useState(false);
-    const { stateResults, getResults } = useContext(F1Context);
+    const { stateSprint, getSprint } = useContext(F1Context);
     const [stateCountry, setStateCountry] = useState(INITIAL_STATE);
-    const { RaceTable } = stateResults;
+    const { RaceTable } = stateSprint;
     const { flags } = stateCountry;
 
     useEffect(() => {
-        const response = getResults('current/last/results', setStateCountry);
+        const response = getSprint('current/next/sprint', setStateCountry);
 
         setTimeout(() => {
-            response.then(value => setIsLoad(value))
+            response.then(value => {
+                showSectionSprint(value)
+                setIsLoad(value)
+            })
         }, 2000);
     }, [])
 
@@ -43,7 +49,7 @@ export default function SectionResults() {
             {
                 isLoad ? (
                     <Section
-                        title={`${RaceTable?.Races[0].raceName} Result`}
+                        title={`${RaceTable?.Races[0].raceName} Sprint`}
                         content={
                             <>
                                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
@@ -72,41 +78,15 @@ export default function SectionResults() {
                                             DNF
                                         </Text>
                                     </View>
-                                    <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-                                        <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#C026D3', marginRight: 6 }} />
-                                        <Text style={{ fontSize: 18 }}>
-                                            Fastest Lap
-                                        </Text>
-                                    </View>
                                 </View>
                                     <TableData
                                         height='70%'
                                         tBody={
                                             <>
-                                                {RaceTable?.Races[0].Results?.map((value: Result, index) => {
+                                                {RaceTable?.Races[0].SprintResults?.map((value, index) => {
                                                     let status, time;
 
-                                                    if (value.FastestLap?.rank === '1' && (value.status === '+1 Lap' || value.status === '+2 Laps' || value.status === '+3 Laps' || value.status === '+4 Laps' || value.status === '+5 Laps' || value.status === '+6 Laps' || value.status === '+7 Laps' || value.status === '+8 Laps' || value.status === '+9 Laps')) {
-                                                        status = <>
-                                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                                <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#16A34A', marginRight: 6 }} />
-                                                            </View>
-                                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                                <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#C026D3', marginRight: 6 }} />
-                                                            </View>
-                                                        </>;
-                                                        time = value.Time?.time || value.status;
-                                                    } else if (value.FastestLap?.rank === '1') {
-                                                        status = <>
-                                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                                <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#16A34A', marginRight: 6 }} />
-                                                            </View>
-                                                            <View style={{ flex: 1, alignItems: "center" }}>
-                                                                <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#C026D3', marginRight: 6 }} />
-                                                            </View>
-                                                        </>;
-                                                        time = value.Time.time;
-                                                    } else if (value.status === 'Finished' || value.status === '+1 Lap' || value.status === '+2 Laps' || value.status === '+3 Laps' || value.status === '+4 Laps' || value.status === '+5 Laps' || value.status === '+6 Laps' || value.status === '+7 Laps' || value.status === '+8 Laps' || value.status === '+9 Laps') {
+                                                    if (value.status === 'Finished' || value.status === '+1 Lap' || value.status === '+2 Laps' || value.status === '+3 Laps' || value.status === '+4 Laps' || value.status === '+5 Laps' || value.status === '+6 Laps' || value.status === '+7 Laps' || value.status === '+8 Laps' || value.status === '+9 Laps') {
                                                         status = <View style={{ flex: 1, alignItems: "center" }}>
                                                             <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#16A34A', marginRight: 6 }} />
                                                         </View>;
