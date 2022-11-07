@@ -17,29 +17,25 @@ export default function Menu() {
             flex: 1,
             borderTopColor: '#000',
             borderTopWidth: 1,
+            flexDirection: 'row',
+            alignItems: 'center'
         }}>
-            <View style={{
-                flex: 1,
-                flexDirection: 'row',
-                alignItems: 'center'
-            }}>
-                {
-                    Routes.map((value, index) => (
-                        <Link to={value.route} underlayColor="#bbbbbb" style={{ flex: 1, alignItems: 'center', paddingVertical: 8 }} key={index}>
-                            <>
-                                <FontAwesomeIcon icon={value.icon} size={20} style={{ color: "#000" }} />
-                                <Text style={{ fontSize: 12, paddingTop: 2 }}>{value.name}</Text>
-                            </>
-                        </Link>
-                    ))
-                }
-                {/* <TouchableHighlight style={{ flex: 1, alignItems: 'center', paddingVertical: 8 }} underlayColor="#bbbbbb" onPress={() => Alert.alert('Touch')}>
+            {
+                Routes.map((value, index) => (
+                    <Link to={value.route} underlayColor="#bbbbbb" style={{ flex: 1, alignItems: 'center', justifyContent: 'center', height: '100%' }} key={index}>
+                        <>
+                            <FontAwesomeIcon icon={value.icon} size={18} style={{ color: "#000" }} />
+                            <Text style={{ fontSize: 12, paddingTop: 2 }}>{value.name}</Text>
+                        </>
+                    </Link>
+                ))
+            }
+            {/* <TouchableHighlight style={{ flex: 1, alignItems: 'center', paddingVertical: 8 }} underlayColor="#bbbbbb" onPress={() => Alert.alert('Touch')}>
                     <>
                         <FontAwesomeIcon icon={faPalette} size={20} style={{ color: "#000" }} />
                         <Text style={{ fontSize: 12, paddingTop: 2 }}>Theme</Text>
                     </>
                 </TouchableHighlight> */}
-            </View>
         </View>
     )
 }
