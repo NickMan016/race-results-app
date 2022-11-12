@@ -4,7 +4,7 @@
     "slug": "Race-Results",
     "version": "1.0.3",
     "orientation": "portrait",
-    "icon": "./assets/Race_Results_Logo_Icon.png",
+    "icon": "./assets/Race_Results_Logo_App.jpg",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/Race_Results_Logo_Splash.png",
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/Race_Results_Logo_Icon.png",
+        "foregroundImage": "./assets/Race_Results_Logo_App.jpg",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.nickman016.raceresults"
