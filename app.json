@@ -2,7 +2,7 @@
   "expo": {
     "name": "Race Results",
     "slug": "Race-Results",
-    "version": "1.0.5",
+    "version": "1.0.7",
     "orientation": "portrait",
     "icon": "./assets/Race_Results_Logo_App.png",
     "userInterfaceStyle": "light",
@@ -29,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/Race_Results_Logo_Icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "86a91e7c-e349-49b7-baef-bf33afb7208a"
+      }
     }
   }
 }

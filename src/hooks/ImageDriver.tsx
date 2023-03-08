@@ -34,7 +34,7 @@ export default function ImageDriver({ driver, size, margin }: PropsImageDriver) 
     
     return (
         <Image
-            style={{ width: size, height: size, borderRadius: 25, marginHorizontal: margin }}
+            style={{ width: size, height: size, borderRadius: (size / 2), marginHorizontal: margin }}
             source={drivers[driver]}
         />
     )

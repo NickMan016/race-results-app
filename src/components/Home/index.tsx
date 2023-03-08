@@ -1,9 +1,11 @@
-import { useWindowDimensions, StyleSheet, View } from "react-native";
+import { useWindowDimensions, View } from "react-native";
 import { useState } from 'react';
 import { SceneMap, TabView, TabBar } from 'react-native-tab-view';
 import Standings from "./components/Standings";
 import Results from "./components/Results";
 import Menu from "../Menu";
+import SectionFinishSeason from "./components/SectionFinishSeason";
+import { useLocation } from "react-router-native";
 
 const renderScene = SceneMap({
     first: Results,
@@ -11,7 +13,9 @@ const renderScene = SceneMap({
 });
 
 export default function Home() {
+    const location = useLocation();
     const layout = useWindowDimensions();
+    const [showSectionFinishSeason, setShowSectionFinishSeason] = useState(true);
 
     const [index, setIndex] = useState(0);
     const [routes] = useState([
@@ -30,15 +34,20 @@ export default function Home() {
     return (
         <>
             <View style={{ flex: 12 }}>
-                <TabView
-                    navigationState={{ index, routes }}
-                    renderTabBar={renderTabBar}
-                    renderScene={renderScene}
-                    onIndexChange={setIndex}
-                    initialLayout={{ width: layout.width }}
-                />
+                {
+                    showSectionFinishSeason ? (
+                        <SectionFinishSeason showSectionFinishSeason={setShowSectionFinishSeason} />
+                    ) : (
+                        <TabView
+                            navigationState={{ index, routes }}
+                            renderTabBar={renderTabBar}
+                            renderScene={renderScene}
+                            onIndexChange={setIndex}
+                            initialLayout={{ width: layout.width }}
+                        />
+                    )
+                }
             </View>
-            <Menu />
         </>
     )
 }

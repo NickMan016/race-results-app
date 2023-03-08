@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { View, Text, Image, TouchableHighlight, FlatList, ScrollView } from "react-native"
-import { useNavigate } from "react-router-native";
+import { useLocation, useNavigate } from "react-router-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome"
 import { fa1, fa2, fa3, faArrowLeft, faChevronCircleLeft, faChevronCircleRight, faClock, faP } from "@fortawesome/free-solid-svg-icons"
 import { Country } from "../../interfaces/CountriesInterfaces";
@@ -28,6 +28,7 @@ export default function Schedule() {
         capital: ""
     }
 
+    const location = useLocation();
     const navigate = useNavigate();
     const [isLoad, setIsLoad] = useState(false);
     const { stateSchedule, stateRace, stateResults, getSchedule, getRaceWithResults } = useContext(F1Context);
@@ -36,7 +37,8 @@ export default function Schedule() {
     const { flags } = stateCountry
 
     useEffect(() => {
-        getSchedule(`current`)
+        const date = new Date();
+        getSchedule(date.getFullYear().toString())
         const response = getRaceWithResults(`current/next`, setStateCountry)
 
         setTimeout(() => {
@@ -46,7 +48,7 @@ export default function Schedule() {
 
     const handleChangeRoundPlus = () => {
         setIsLoad(false)
-        const responseRace = getRaceWithResults(`current/${parseInt(RaceTable?.round || '1') + 1}`, setStateCountry)
+        const responseRace = getRaceWithResults(`${RaceTable?.season}/${parseInt(RaceTable?.round || '1') + 1}`, setStateCountry)
 
         setTimeout(() => {
             responseRace.then(value => setIsLoad(value))
@@ -55,7 +57,7 @@ export default function Schedule() {
 
     const handleChangeRoundMinus = () => {
         setIsLoad(false)
-        const responseRace = getRaceWithResults(`current/${parseInt(RaceTable?.round || '1') - 1}`, setStateCountry)
+        const responseRace = getRaceWithResults(`${RaceTable?.season}/${parseInt(RaceTable?.round || '1') - 1}`, setStateCountry)
 
         setTimeout(() => {
             responseRace.then(value => setIsLoad(value))
