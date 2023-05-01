@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import Menu from "../components/Menu";
 import Schedule from "../components/Schedule";
 import Teams from "../components/Teams";
+import Theme from "../components/Theme";
 
 export default function Router() {
     return (
@@ -13,6 +14,7 @@ export default function Router() {
                 <Route path="/drivers" element={<Drivers />} />
                 <Route path="/teams" element={<Teams />} />
                 <Route path="/schedule" element={<Schedule />} />
+                <Route path="/theme" element={<Theme />} />
             </Routes>
             <Menu />
         </NativeRouter>

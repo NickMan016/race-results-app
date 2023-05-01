@@ -11,6 +11,7 @@ export default function Menu() {
         { name: 'Drivers', route: '/drivers', icon: faUser },
         { name: 'Teams', route: '/teams', icon: faPeopleGroup },
         { name: 'Schedule', route: '/schedule', icon: faCalendarDays },
+        { name: 'Theme', route: '/theme', icon: faPalette },
     ]
 
 
@@ -32,12 +33,6 @@ export default function Menu() {
                     </Link>
                 ))
             }
-            {/* <TouchableHighlight style={{ flex: 1, alignItems: 'center', paddingVertical: 8 }} underlayColor="#bbbbbb" onPress={() => Alert.alert('Touch')}>
-                    <>
-                        <FontAwesomeIcon icon={faPalette} size={20} style={{ color: "#000" }} />
-                        <Text style={{ fontSize: 12, paddingTop: 2 }}>Theme</Text>
-                    </>
-                </TouchableHighlight> */}
         </View>
     )
 }
