@@ -2,7 +2,7 @@ import { View, ScrollView } from "react-native"
 
 interface PropsTableData {
     tBody: JSX.Element
-    height: number | string
+    height?: number | string
 }
 
 export default function TableData({ tBody, height }: PropsTableData) {

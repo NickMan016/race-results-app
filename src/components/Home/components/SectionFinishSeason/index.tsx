@@ -7,6 +7,7 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import SectionLoading from "../../../Section/components/SectionLoading";
 import ImageDriver from "../../../../hooks/ImageDriver";
 import ImageConstructor from "../../../../hooks/imageConstructor";
+import { ThemeContext } from "../../../../context/Theme/ThemeContext";
 
 
 interface PropsSectionFinishSeason {
@@ -15,6 +16,7 @@ interface PropsSectionFinishSeason {
 
 export default function SectionFinishSeason({ showSectionFinishSeason }: PropsSectionFinishSeason) {
     const [isLoad, setIsLoad] = useState(false);
+    const { stateTheme } = useContext(ThemeContext);
     const { stateDriverStanding, stateConstructorStanding, stateInfoDriverChampion, getDriverStanding, getConstructorStanding, getInfoDriverChampion, getSchedule } = useContext(F1Context);
 
     useEffect(() => {
@@ -48,10 +50,10 @@ export default function SectionFinishSeason({ showSectionFinishSeason }: PropsSe
                                                         <ImageDriver driver={`${value.Driver.driverId}`} size={140} margin={8} />
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: "center" }}>
-                                                        <Text style={{ fontSize: 18 }}>Points: {stateInfoDriverChampion.points}</Text>
-                                                        <Text style={{ fontSize: 18 }}>Races Won: {stateInfoDriverChampion.wins}</Text>
-                                                        <Text style={{ fontSize: 18 }}>Poles: {stateInfoDriverChampion.poles}</Text>
-                                                        <Text style={{ fontSize: 18 }}>Fastest Laps: {stateInfoDriverChampion.fastestlaps}</Text>
+                                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>Points: {stateInfoDriverChampion.points}</Text>
+                                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>Races Won: {stateInfoDriverChampion.wins}</Text>
+                                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>Poles: {stateInfoDriverChampion.poles}</Text>
+                                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>Fastest Laps: {stateInfoDriverChampion.fastestlaps}</Text>
                                                     </View>
                                                 </View>
                                             } />
@@ -71,8 +73,8 @@ export default function SectionFinishSeason({ showSectionFinishSeason }: PropsSe
                                                         <ImageConstructor constructor={`${value.Constructor.constructorId}`} />
                                                     </View>
                                                     <View style={{ flex: 1, justifyContent: "center" }}>
-                                                        <Text style={{ fontSize: 18 }}>Races Won: {value.wins}</Text>
-                                                        <Text style={{ fontSize: 18 }}>Points: {value.points}</Text>
+                                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>Races Won: {value.wins}</Text>
+                                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>Points: {value.points}</Text>
                                                     </View>
                                                 </View>
                                             } />

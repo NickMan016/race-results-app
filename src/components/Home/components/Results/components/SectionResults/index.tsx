@@ -8,6 +8,7 @@ import TableData from "../../../../../TableData";
 import { Result } from "../../../../../../interfaces/F1Interfaces";
 import Section from "../../../../../Section";
 import SectionLoading from "../../../../../Section/components/SectionLoading";
+import { ThemeContext } from "../../../../../../context/Theme/ThemeContext";
 
 export default function SectionResults() {
     const INITIAL_STATE: Country = {
@@ -25,6 +26,7 @@ export default function SectionResults() {
     }
 
     const [isLoad, setIsLoad] = useState(false);
+    const { stateTheme } = useContext(ThemeContext);
     const { stateResults, getResults } = useContext(F1Context);
     const [stateCountry, setStateCountry] = useState(INITIAL_STATE);
     const { RaceTable } = stateResults;
@@ -47,7 +49,7 @@ export default function SectionResults() {
                         content={
                             <>
                                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                                    <Text style={{ fontSize: 18, lineHeight: 26 }}>
+                                    <Text style={{ fontSize: 18, lineHeight: 26, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                         {`${RaceTable?.Races[0].Circuit.circuitName}\n${RaceTable?.Races[0].Circuit.Location.locality}, ${RaceTable?.Races[0].Circuit.Location.country}`}
                                     </Text>
                                     {
@@ -62,19 +64,19 @@ export default function SectionResults() {
                                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 6 }}>
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#16A34A', marginRight: 6 }} />
-                                        <Text style={{ fontSize: 18 }}>
+                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                             Finished
                                         </Text>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#DC2626', marginRight: 6 }} />
-                                        <Text style={{ fontSize: 18 }}>
+                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                             DNF
                                         </Text>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#C026D3', marginRight: 6 }} />
-                                        <Text style={{ fontSize: 18 }}>
+                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                             Fastest Lap
                                         </Text>
                                     </View>
@@ -118,19 +120,19 @@ export default function SectionResults() {
                                                         time = 'No Time'
                                                     }
                                                     return (
-                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: '#000', paddingVertical: 4 }}>
-                                                            <View style={{ flex: 1.2, alignItems: "center" }}><Text style={{ fontSize: 16 }}>
+                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: `${stateTheme === 'dark' ? '#fff' : '#000'}`, paddingVertical: 4 }}>
+                                                            <View style={{ flex: 1.2, alignItems: "center" }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                                                 {value.position}
                                                             </Text></View>
                                                             <View style={{ flex: 4 }}>
-                                                                <Text style={{ fontSize: 16 }}>{`${value.Driver.givenName.slice(0, 1)}. ${value.Driver.familyName}`}</Text>
-                                                                <Text style={{ fontSize: 12 }}>{value.Constructor.name}</Text>
+                                                                <Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{`${value.Driver.givenName.slice(0, 1)}. ${value.Driver.familyName}`}</Text>
+                                                                <Text style={{ fontSize: 12, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.Constructor.name}</Text>
                                                             </View>
-                                                            <View style={{ flex: 3 }}><Text style={{ fontSize: 16 }}>{time}</Text></View>
+                                                            <View style={{ flex: 3 }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{time}</Text></View>
                                                             <View style={{ flex: 2, flexDirection: "row" }}>
                                                                 {status}
                                                             </View>
-                                                            <View style={{ flex: 1.25, alignItems: "center" }}><Text style={{ fontSize: 16 }}>{value.points}</Text></View>
+                                                            <View style={{ flex: 1.25, alignItems: "center" }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.points}</Text></View>
                                                         </View>
                                                     )
                                                 })}

@@ -9,12 +9,14 @@ import Section from "../Section"
 import TableData from "../TableData"
 import SectionLoadingTable from "../Section/components/SectionLoadingTable"
 import SectionLoading from "../Section/components/SectionLoading"
+import { ThemeContext } from "../../context/Theme/ThemeContext"
 
 export default function Drivers() {
     const navigate = useNavigate();
     const years = ["Current"];
     const [isLoad, setIsLoad] = useState(false);
     const [isLoadTable, setIsLoadTable] = useState(false);
+    const { stateTheme } = useContext(ThemeContext);
     const { stateDrivers, getDrivers } = useContext(F1Context);
     const { DriverTable } = stateDrivers;
     const date = new Date();
@@ -48,12 +50,8 @@ export default function Drivers() {
     }
 
     return (
-        <View style={{ flex: 12 }} >
-            <View style={{ backgroundColor: '#ee0000' }}>
-                <TouchableHighlight onPress={backHome} style={{ width: 18, paddingVertical: 15, paddingHorizontal: 12 }} activeOpacity={1} underlayColor="#ee0000">
-                    <FontAwesomeIcon icon={faArrowLeft} style={{ color: '#fff' }} size={18} />
-                </TouchableHighlight>
-            </View>
+        <View style={{ flex: 12, backgroundColor: `${stateTheme === 'dark' ? '#111827' : '#fff'}` }} >
+            <View style={{ backgroundColor: '#ee0000', paddingVertical: 24 }}></View>
             {
                 isLoad ? (
                     <Section title="Drivers" content={
@@ -75,7 +73,10 @@ export default function Drivers() {
                                 )}
                                 defaultButtonText="Select An Option"
                                 defaultValueByIndex={0}
-                                buttonStyle={{ borderColor: '#9CA3AF', borderWidth: 3, backgroundColor: '#ffffff', width: '100%', borderRadius: 5, marginTop: 4, marginBottom: 4, paddingHorizontal: 12 }}
+                                buttonStyle={{ borderColor: '#9CA3AF', borderWidth: 3, backgroundColor: `${stateTheme === 'dark' ? '#111827' : '#fff'}`, width: '100%', borderRadius: 5, marginTop: 4, marginBottom: 4, paddingHorizontal: 12 }}
+                                buttonTextStyle={{ color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}
+                                dropdownStyle={{ backgroundColor: `${stateTheme === 'dark' ? '#111827' : '#fff'}` }}
+                                rowTextStyle={{ color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}
                             />
                             {
                                 isLoadTable ? (
@@ -85,13 +86,13 @@ export default function Drivers() {
                                             <>
                                                 {
                                                     DriverTable.Drivers.map((value, index) => (
-                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: '#000', paddingVertical: 4 }}>
+                                                        <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: `${stateTheme === 'dark' ? '#fff' : '#000'}`, paddingVertical: 4 }}>
                                                             <View style={{ flex: .5 }}></View>
                                                             <View style={{ flex: 4 }}>
-                                                                <Text style={{ fontSize: 16 }}>{`${value.givenName} ${value.familyName}`}</Text>
-                                                                <Text style={{ fontSize: 12 }}>{value.nationality}</Text>
+                                                                <Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{`${value.givenName} ${value.familyName}`}</Text>
+                                                                <Text style={{ fontSize: 12, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.nationality}</Text>
                                                             </View>
-                                                            <View style={{ flex: 4 }}><Text style={{ fontSize: 16 }}>{value.permanentNumber || 'Not Number'}</Text></View>
+                                                            <View style={{ flex: 4 }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.permanentNumber || 'Not Number'}</Text></View>
                                                         </View>
                                                     ))
                                                 }

@@ -7,6 +7,7 @@ import { F1Context } from "../../../../../../context/F1DB/F1Context";
 import TableData from "../../../../../TableData";
 import Section from "../../../../../Section";
 import SectionLoading from "../../../../../Section/components/SectionLoading";
+import { ThemeContext } from "../../../../../../context/Theme/ThemeContext";
 
 interface PropsSectionSprint {
     showSectionSprint: Dispatch<SetStateAction<boolean>>
@@ -28,6 +29,7 @@ export default function SectionSprint({ showSectionSprint }: PropsSectionSprint)
     }
 
     const [isLoad, setIsLoad] = useState(false);
+    const { stateTheme } = useContext(ThemeContext);
     const { stateSprint, getSprint } = useContext(F1Context);
     const [stateCountry, setStateCountry] = useState(INITIAL_STATE);
     const { RaceTable } = stateSprint;
@@ -53,7 +55,7 @@ export default function SectionSprint({ showSectionSprint }: PropsSectionSprint)
                         content={
                             <>
                                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-                                    <Text style={{ fontSize: 18, lineHeight: 26 }}>
+                                    <Text style={{ fontSize: 18, lineHeight: 26, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                         {`${RaceTable?.Races[0].Circuit.circuitName}\n${RaceTable?.Races[0].Circuit.Location.locality}, ${RaceTable?.Races[0].Circuit.Location.country}`}
                                     </Text>
                                     {
@@ -68,13 +70,13 @@ export default function SectionSprint({ showSectionSprint }: PropsSectionSprint)
                                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 6 }}>
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#16A34A', marginRight: 6 }} />
-                                        <Text style={{ fontSize: 18 }}>
+                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                             Finished
                                         </Text>
                                     </View>
                                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                                         <FontAwesomeIcon icon={faCircle} size={20} style={{ color: '#DC2626', marginRight: 6 }} />
-                                        <Text style={{ fontSize: 18 }}>
+                                        <Text style={{ fontSize: 18, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                             DNF
                                         </Text>
                                     </View>
@@ -99,18 +101,18 @@ export default function SectionSprint({ showSectionSprint }: PropsSectionSprint)
                                                     }
                                                     return (
                                                         <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: '#000', paddingVertical: 4 }}>
-                                                            <View style={{ flex: 1.2, alignItems: "center" }}><Text style={{ fontSize: 16 }}>
+                                                            <View style={{ flex: 1.2, alignItems: "center" }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>
                                                                 {value.position}
                                                             </Text></View>
                                                             <View style={{ flex: 4 }}>
-                                                                <Text style={{ fontSize: 16 }}>{`${value.Driver.givenName.slice(0, 1)}. ${value.Driver.familyName}`}</Text>
-                                                                <Text style={{ fontSize: 12 }}>{value.Constructor.name}</Text>
+                                                                <Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{`${value.Driver.givenName.slice(0, 1)}. ${value.Driver.familyName}`}</Text>
+                                                                <Text style={{ fontSize: 12, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.Constructor.name}</Text>
                                                             </View>
-                                                            <View style={{ flex: 3 }}><Text style={{ fontSize: 16 }}>{time}</Text></View>
+                                                            <View style={{ flex: 3 }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{time}</Text></View>
                                                             <View style={{ flex: 2, flexDirection: "row" }}>
                                                                 {status}
                                                             </View>
-                                                            <View style={{ flex: 1.25, alignItems: "center" }}><Text style={{ fontSize: 16 }}>{value.points}</Text></View>
+                                                            <View style={{ flex: 1.25, alignItems: "center" }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.points}</Text></View>
                                                         </View>
                                                     )
                                                 })}

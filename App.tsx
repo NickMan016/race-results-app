@@ -1,8 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { F1Provider } from './src/context/F1DB/F1Provider';
 import { CountriesProvider } from './src/context/CountriesDB/CountriesProvider';
+import { ThemeProvider } from './src/context/Theme/ThemeProvider';
 import Router from './src/routes';
-import { Appearance, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import { getCachedData } from './src/hooks/cache';
+import { useContext, useEffect } from 'react';
+import { ThemeContext } from './src/context/Theme/ThemeContext';
 
 const styles = StyleSheet.create({
     container_light: {
@@ -17,20 +21,27 @@ const styles = StyleSheet.create({
 
 export default function App() {
 
-    const colorScheme = Appearance.getColorScheme();
+    const { stateTheme, setTheme } = useContext(ThemeContext);
+    getCachedData('theme').then(data => {
+        if (data === null) {
+            setTheme('light')
+        }
+    })
 
     return (
         <CountriesProvider>
             <F1Provider>
-                <StatusBar
-                    animated={true}
-                    backgroundColor="#c40000"
-                    translucent={false}
-                    style='light'
-                />
-                <View style={colorScheme === 'dark' ? styles.container_dark : styles.container_light}>
-                    <Router />
-                </View>
+                <ThemeProvider>
+                    <StatusBar
+                        animated={true}
+                        backgroundColor="#c40000"
+                        translucent={false}
+                        style='light'
+                    />
+                    <View style={stateTheme === 'dark' ? styles.container_dark : styles.container_light}>
+                        <Router />
+                    </View>
+                </ThemeProvider>
             </F1Provider>
         </CountriesProvider>
     );
