@@ -206,7 +206,7 @@ export default function Schedule() {
                                                                     return (
                                                                         <View key={index} style={{ flexDirection: "row", alignItems: "center", marginTop: 8 }}>
                                                                             <View style={{ backgroundColor: '#C026D3', borderRadius: 4, marginHorizontal: 8, padding: 5 }}>
-                                                                                <FontAwesomeIcon icon={faClock} size={22} style={{ color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }} />
+                                                                                <FontAwesomeIcon icon={faClock} size={22} style={{ color: '#fff' }} />
                                                                             </View>
                                                                             <ImageDriver driver={`${value.Driver.driverId}`} size={50} margin={8} />
                                                                             <View style={{ marginHorizontal: 8 }}>

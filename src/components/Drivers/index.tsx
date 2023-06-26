@@ -10,6 +10,7 @@ import TableData from "../TableData"
 import SectionLoadingTable from "../Section/components/SectionLoadingTable"
 import SectionLoading from "../Section/components/SectionLoading"
 import { ThemeContext } from "../../context/Theme/ThemeContext"
+import ImageDriver from "../../hooks/ImageDriver"
 
 export default function Drivers() {
     const navigate = useNavigate();
@@ -87,12 +88,14 @@ export default function Drivers() {
                                                 {
                                                     DriverTable.Drivers.map((value, index) => (
                                                         <View key={index} style={{ flexDirection: "row", alignItems: "center", borderBottomWidth: .75, borderBottomColor: `${stateTheme === 'dark' ? '#fff' : '#000'}`, paddingVertical: 4 }}>
-                                                            <View style={{ flex: .5 }}></View>
-                                                            <View style={{ flex: 4 }}>
+                                                            <View style={{ flex: 1.5 }}>
+                                                                <ImageDriver driver={value.driverId} margin={8} size={32} />
+                                                            </View>
+                                                            <View style={{ flex: 5 }}>
                                                                 <Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{`${value.givenName} ${value.familyName}`}</Text>
                                                                 <Text style={{ fontSize: 12, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.nationality}</Text>
                                                             </View>
-                                                            <View style={{ flex: 4 }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.permanentNumber || 'Not Number'}</Text></View>
+                                                            <View style={{ flex: 3 }}><Text style={{ fontSize: 16, color: `${stateTheme === 'dark' ? '#fff' : '#000'}` }}>{value.permanentNumber || 'Not Number'}</Text></View>
                                                         </View>
                                                     ))
                                                 }
